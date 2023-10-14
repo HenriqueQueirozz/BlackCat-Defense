@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zombies', function (Blueprint $table) {
+        Schema::create('zombie', function (Blueprint $table) {
             $table->increments('id');
 	        $table->enum('periculosidade', ['Muito Baixa', 'Baixa', 'Media', 'Alta', 'Muita Alta'])->nullable();
 	        $table->integer('forca')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
 	        $table->string('imagem', 100)->nullable();
             $table->integer('idade');
             $table->enum('sexo', ['M', 'F']);
-            $table->float('peso', 3,2);
+            $table->float('peso', 5,2);
             $table->float('altura', 3,2);
             $table->enum('tipo_sanguineo', ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']);
             $table->enum('estilo_musical', ['Pop', 'Roc', 'Pag', 'Ser', 'Hip', 'Ele', 'Fun', 'Met', 'Out']);

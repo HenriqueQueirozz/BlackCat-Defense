@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zombies_weakness', function (Blueprint $table) {
+        Schema::create('zombie_weakness', function (Blueprint $table) {
             $table->id('id_weakness');
             $table->longText('descricao');
             $table->string('imagem', 100)->nullable();

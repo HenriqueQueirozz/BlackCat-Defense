@@ -151,4 +151,32 @@ class ZombiesController extends Controller
         $imc = $peso / ($altura**2);
         return $imc;
     }
+
+    public function faixaDePontosPorAtributos($atributo, $caracteristica, $valor){
+        switch($caracteristica){    
+            case 'idade';
+                switch($atributo){    
+                    case 'forca';
+                        if($valor <= 6){
+                            return 1;
+                        }else if(($valor <= 9) || ($valor >= 91 && $valor <= 100)){
+                            return 2;
+                        }else if(($valor <= 11) || ($valor >= 81 && $valor <= 90)){
+                            return 3;
+                        }else if(($valor <= 14) || ($valor >= 71 && $valor <= 80)){
+                            return 5;
+                        }else if(($valor <= 16) || ($valor >= 61 && $valor <= 70)){
+                            return 6;
+                        }else if(($valor <= 20) || ($valor >= 33 && $valor <= 40)){
+                            return 9;
+                        }else if($valor <= 50){
+                            return 8;
+                        }else if($valor <= 60){
+                            return 7;
+                        }else if($valor <= 32){
+                            return 10;
+                        }
+                }
+        }
+    }
 }
