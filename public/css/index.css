@@ -1,0 +1,269 @@
+main{
+    background:  #01141a;
+}
+main .main {
+    width: 100%;
+    background-color: #010000;
+}
+
+main .main .main__presentation {
+    width: 100%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+main .main .main__presentation .main__description {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 56px;
+}
+
+main .main .main__presentation .main__description h2 {
+    font-size: 24px;
+    width: 90%;
+}
+
+main .main .main__presentation .main__description button {
+    width: 233px;
+    height: 40px;
+    border-radius: 5px;
+    background: #01141a;
+    border: none;
+}
+
+main .main .main__presentation .main__description button:hover {
+    background: #082b35;
+    transform: scale(1.01);
+}
+
+main .main .main__presentation .main__image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .main .main__presentation .main__image figure {
+    width: 90%;
+    height: 90%;
+    max-width: 400px;
+    max-height: 400px;
+}
+main .main .main__presentation .main__image figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+main .main__mission {
+    width: 100%;
+    height: 550px;
+    /* background: #01141a; */
+}
+
+main .main__mission .main__mission-description {
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 0 40px;
+}
+
+main .main__mission .main__mission-description h3 {
+    font-size: 24px;
+    text-align: center;
+}
+
+main .main__mission .main__mission-description .mission-description__steps {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+main .main__mission .main__mission-description .mission-description__steps .mission-description__card {
+    width: 250px;
+    height: 295px;
+    border-radius: 5px;
+    background: #010000;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+main .main__mission .main__mission-description .mission-description__steps .mission-description__card:hover {
+    transform: scale(1.01);
+}
+
+main .main__mission .main__mission-description .mission-description__steps .mission-description__card figure {
+    width: 58px;
+    height: 58px;
+}
+
+main .main__mission .main__mission-description .mission-description__steps .mission-description__card figure img {
+    width: 100%;
+    object-fit: contain;
+}
+
+main .main__mission .main__mission-description .mission-description__steps .mission-description__card p {
+    font-size: 16px;
+    text-align: center;
+}
+
+main .main__laboratory {
+    width: 100%;
+    height: 500px;
+    /* background: #01141a; */
+}
+
+main .main__laboratory .main__laboratory-duck {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__description {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__description h2 {
+    font-size: 24px;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__description p {
+    font-size: 18px;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__description button {
+    width: 233px;
+    height: 40px;
+    border-radius: 5px;
+    background: #012925;
+    border: none;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__description button:hover {
+    background: #082b35;
+    transform: scale(1.01);
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__image figure {
+    width: 90%;
+    height: 90%;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+main .main__laboratory .main__laboratory-duck .laboratory__image figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+    main .main .main__presentation {
+        padding: 0 20px;
+    }
+
+    main .main__mission .main__mission-description {
+        padding: 0 20px;
+    }
+
+    main .main__laboratory .main__laboratory-duck {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    main .main__mission{
+        height: auto;
+        padding: 10px 0;
+     }
+    main .main__mission .main__mission-description {
+       height: auto;
+    }
+    main .main__mission .main__mission-description .mission-description__steps {
+       height: auto;
+       flex-wrap: wrap;
+       gap: 10px;
+    }
+    main .main__laboratory{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main .main .main__presentation{
+        height: auto;
+        flex-direction: column;
+    }
+    main .main .main__presentation .main__description{
+        width: 90%;
+        text-align: center;
+        margin: 20px;
+        align-items: center;
+        height: 50%;
+    }
+    main .main .main__presentation .main__image{
+        width: 90%;
+        height: 50%;
+    }
+    
+main .main .main__presentation .main__image figure {
+    width: 250px;
+    height: 100%;
+}
+main .main__laboratory .main__laboratory-duck{
+    flex-direction: column;
+    justify-content: center;
+}
+main .main__laboratory .main__laboratory-duck .laboratory__description{
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    height: 50%;
+    margin: 10px 0;
+}
+main .main__laboratory .main__laboratory-duck .laboratory__image{
+    width: 90%;
+    height: 50%;
+}
+}

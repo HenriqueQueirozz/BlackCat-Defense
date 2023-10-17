@@ -7,10 +7,7 @@ use App\Http\Controllers\ZombiesWeaknessController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('zombies', ZombiesController::class);
-Route::resource('defenses', ZombiesDefenseController::class);
-Route::resource('counterattack', ZombiesCounterController::class);
-Route::resource('weaknesses', ZombiesWeaknessController::class);
-
-Route::post('calculo-atributos/{zombie}', [ZombiesController::class, 'analiseDeAtributos']);
-Route::post('calculo-periculosidade/{zombie}', [ZombiesController::class, 'analiseDePericulosidade']);
+Route::resource('zombies', ZombiesController::class)->only(['index', 'show', 'store']);
+Route::resource('defenses', ZombiesDefenseController::class)->only(['index', 'show']);
+Route::resource('counterattack', ZombiesCounterController::class)->only(['index', 'show']);
+Route::resource('weaknesses', ZombiesWeaknessController::class)->only(['index', 'show']);

@@ -4,22 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Zombie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ZombiesController extends Controller
 {
     public function index(){
         $zombies = Zombie::all();
-        return response()->json($zombies);
+        return response()->json(["message" => "Listando todos os zumbis.", "data" => $zombies], 200);
     }
 
-    public function create(){}
+    // public function create(){}
     
     public function store(Request $request){
+        $validator = Validator::make($request->all(), [
+            'idade' => 'required|numeric|min:1|max:130',
+            'sexo' => ['required', Rule::in(['M', 'F'])],
+            'tipo_sanguineo' => ['required', Rule::in(['AB+', 'AB-', 'O+', 'O-', 'A+', 'A-', 'B+', 'B-'])],
+            'peso' => 'required|decimal:0,2|min:1|max:700',
+            'altura' => 'required|decimal:0,2|min:1|max:3',
+            'estilo_musical' => ['required', Rule::in(['Pop', 'Roc', 'Pag', 'Ser', 'Hip', 'Ele', 'Fun', 'Met', 'Out'])],
+            'esporte' => ['required', Rule::in(['Fut', 'Bas', 'Vol', 'Lut', 'Atl', 'Esp', 'Nad'])],
+            'jogo' => ['required', Rule::in(['Cs', 'Mine', 'Fort', 'Witch', 'Val', 'Ac', 'Wow', 'Fifa', 'Lol', 'Dota', 'Rocket', 'Out'])]
+        ],[
+            'peso.decimal' => "O campo peso deve apresentar um formato semelhante a este '75.50'",
+            'altura.decimal' => "O campo altura deve apresentar um formato semelhante a este '1.80'",
+        ]);
+
+        if($validator->fails()){
+            return response()->json(["error" => 'Informação inválida.', "message" => $validator->errors()], 422);
+        }
+            
         $zombie = new Zombie();
         $zombie->fill($request->all());
         $zombie->save();
 
-        return response()->json($zombie, 201);
+        $this->analiseDeAtributos($zombie);
+        $this->analiseDePericulosidade($zombie);
+
+        return response()->json(["message" => "Zumbi cadastrado com sucesso.", "data" => $zombie], 201);
     }
 
     public function show($id){
@@ -31,56 +54,45 @@ class ZombiesController extends Controller
             );
         }
 
-        return response()->json($zombie);
+        return response()->json(["message" => "Zumbi localizado.", "data" => $zombie], 200);
     }
 
     public function edit($id){}
 
-    public function update(Request $request, $id){
-        $zombie = Zombie::find($id);
+    // public function update(Request $request, $id){
+    //     $zombie = Zombie::find($id);
 
-        if(!$zombie){
-            return response()->json(
-                ['message' => 'Zombie catalogado não encontrado'], 404
-            );
-        }
+    //     if(!$zombie){
+    //         return response()->json(
+    //             ['message' => 'Zombie catalogado não encontrado'], 404
+    //         );
+    //     }
 
-        $zombie->fill($request->all());
-        $zombie->save();
+    //     $zombie->fill($request->all());
+    //     $zombie->save();
 
-        return response()->json($zombie, 201);
-    }
+    //     return response()->json($zombie, 201);
+    // }
 
-    public function destroy($id){
-        $zombie = Zombie::find($id);
+    // public function destroy($id){
+    //     $zombie = Zombie::find($id);
 
-        if(!$zombie){
-            return response()->json(
-                ['message' => 'Zombie catalogado não encontrado'], 404
-            );
-        }
+    //     if(!$zombie){
+    //         return response()->json(
+    //             ['message' => 'Zombie catalogado não encontrado'], 404
+    //         );
+    //     }
 
-        $zombie->delete();
+    //     $zombie->delete();
 
-        return response()->json($zombie);
-    }
+    //     return response()->json($zombie);
+    // }
 
-    public function analiseDeAtributos($id){
-        $zombie = Zombie::find($id);
-
-        if(!$zombie){
-            return response()->json(
-                ['message' => 'Zombie catalogado não encontrado'], 404
-            );
-        }
-
+    public function analiseDeAtributos($zombie){
         //Calculo de Atríbutos
         $pesoTotal = 2;
         $pontos_atributos = $this->faixaDePontosPorAtributos($zombie);
 
-        // print_r('<pre>');
-        // print_r($pontos_atributos);
-        // exit;
 
         //Força
         $mutacaoForca = $this->fatorMutagenico($zombie->tipo_sanguineo) * 0.1;
@@ -144,15 +156,7 @@ class ZombiesController extends Controller
         return response()->json($zombie);
     }
 
-    public function analiseDePericulosidade($id){
-        $zombie = Zombie::find($id);
-
-        if(!$zombie){
-            return response()->json(
-                ['message' => 'Zombie catalogado não encontrado'], 404
-            );
-        }
-
+    public function analiseDePericulosidade($zombie){
         $array_periculosidade = [];
         $array_periculosidade['forca'] = $zombie->forca;
         $array_periculosidade['velocidade'] = $zombie->velocidade;

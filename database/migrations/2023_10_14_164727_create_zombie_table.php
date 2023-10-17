@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('tipo_sanguineo', ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']);
             $table->enum('estilo_musical', ['Pop', 'Roc', 'Pag', 'Ser', 'Hip', 'Ele', 'Fun', 'Met', 'Out']);
             $table->enum('esporte', ['Fut', 'Bas', 'Vol', 'Lut', 'Atl', 'Esp', 'Nad']);
-            $table->enum('jogo', ['Cs', 'Mine', 'Fort', 'Witch', 'Val', 'Ac', 'Wow', 'Fifa', 'Lol', 'Dota', 'Rocket', 'O']);
+            $table->enum('jogo', ['Cs', 'Mine', 'Fort', 'Witch', 'Val', 'Ac', 'Wow', 'Fifa', 'Lol', 'Dota', 'Rocket', 'Out']);
             $table->timestamps();
             $table->softDeletes();
         });
