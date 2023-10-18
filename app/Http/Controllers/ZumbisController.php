@@ -19,17 +19,17 @@ class ZumbisController extends Controller
     
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'idade' => ['required','numeric','min:1','max:130'],
-            'sexo' => ['required', Rule::in(['M', 'F'])],
-            'tipo_sanguineo' => ['required', Rule::in(['AB+', 'AB-', 'O+', 'O-', 'A+', 'A-', 'B+', 'B-'])],
-            'peso' => ['required','decimal:0,2','min:1','max:700'],
-            'altura' => ['required','decimal:0,2','min:1','max:3'],
-            'estilo_musical' => ['required', Rule::in(['Pop', 'Rock', 'Pagode', 'Sertanejo', 'Hip-Hop/Rap', 'Eletronica', 'Funk', 'Metal', 'Outros'])],
-            'esporte' => ['required', Rule::in(['Futebol', 'Basquete', 'Volei', 'Luta', 'Atletismo', 'eSports', 'Nada'])],
-            'jogo' => ['required', Rule::in(['Counter-Strike', 'Minecraft', 'Fortnite', 'The Witcher', 'Valorant', "Assassin's Creed", 'Warcraft', 'FIFA', 'League of Legends', 'Dota', 'Rocket League', 'Outros'])]
+            'age' => ['required','numeric','min:1','max:130'],
+            'gender' => ['required', Rule::in(['M', 'F'])],
+            'blood_type' => ['required', Rule::in(['AB+', 'AB-', 'O+', 'O-', 'A+', 'A-', 'B+', 'B-'])],
+            'weight' => ['required','decimal:0,2','min:1','max:700'],
+            'height' => ['required','decimal:0,2','min:1','max:3'],
+            'music_style' => ['required', Rule::in(['Pop', 'Rock', 'Pagode', 'Sertanejo', 'Hip-Hop/Rap', 'Eletronica', 'Funk', 'Metal', 'Outros'])],
+            'sport' => ['required', Rule::in(['Futebol', 'Basquete', 'Volei', 'Luta', 'Atletismo', 'eSports', 'Nada'])],
+            'favorite_game' => ['required', Rule::in(['Counter-Strike', 'Minecraft', 'Fortnite', 'The Witcher', 'Valorant', "Assassin's Creed", 'Warcraft', 'FIFA', 'League of Legends', 'Dota', 'Rocket League', 'Outros'])]
         ],[
-            'peso.decimal' => "O campo peso deve apresentar um formato semelhante a este '75.50'",
-            'altura.decimal' => "O campo altura deve apresentar um formato semelhante a este '1.80'",
+            'weight.decimal' => "O campo peso deve apresentar um formato semelhante a este '75.50'",
+            'height.decimal' => "O campo altura deve apresentar um formato semelhante a este '1.80'",
         ]);
 
         if($validator->fails()){
@@ -40,9 +40,9 @@ class ZumbisController extends Controller
         $zumbi->fill($request->all());
 
         if($zumbi->gender == 'M'){
-            $imagemZumbi = 'zumbiMasculino'.random_int(0,4).'.jpg';
+            $imagemZumbi = 'zumbiMasculino'.random_int(1,5).'.jpg';
         }else{
-            $imagemZumbi = 'zumbiFeminino'.random_int(0,4).'.jpg';
+            $imagemZumbi = 'zumbiFeminino'.random_int(1,5).'.jpg';
         }
 
         $zumbi->image = $imagemZumbi;

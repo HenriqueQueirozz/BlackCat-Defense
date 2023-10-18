@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('blood_type', ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']);
             $table->enum('music_style', ['Pop', 'Rock', 'Pagode', 'Sertanejo', 'Hip-Hop/Rap', 'Eletronica', 'Funk', 'Metal', 'Outros']);
             $table->enum('sport', ['Futebol', 'Basquete', 'Volei', 'Luta', 'Atletismo', 'eSports', 'Nada']);
-            $table->enum('favorite_game', ['Counter-Strike', 'Minecraft', 'Fortnite', 'The Witcher', 'Valorant', "Assassin's Creed", 'Warcraft', 'FIFA', 'League of Legends', 'Dota', 'Rocket League', 'Outros']);
+            $table->enum('favorite_game', ['Counter-Strike', 'Minecraft', 'Fortnite', 'The Witcher', 'Valorant', 'Assassin s Creed', 'Warcraft', 'FIFA', 'League of Legends', 'Dota', 'Rocket League', 'Outros']);
             $table->timestamps();
         });
     }

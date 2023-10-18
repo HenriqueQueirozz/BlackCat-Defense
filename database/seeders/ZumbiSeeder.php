@@ -28,7 +28,7 @@ class ZumbiSeeder extends Seeder
                 'music_style' => 'Pagode',
                 'sport' => 'Atletismo',
                 'favorite_game' => 'Minecraft',
-            ],
+            ]
         );
     }
 }
