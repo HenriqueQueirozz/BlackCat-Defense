@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ZombiesController;
-use App\Http\Controllers\ZombiesCounterController;
-use App\Http\Controllers\ZombiesDefenseController;
-use App\Http\Controllers\ZombiesWeaknessController;
+use App\Http\Controllers\ZumbisController;
+use App\Http\Controllers\ZumbisCounterController;
+use App\Http\Controllers\ZumbisDefenseController;
+use App\Http\Controllers\ZumbisWeaknessController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('zombies', ZombiesController::class)->only(['index', 'show', 'store']);
-Route::resource('defenses', ZombiesDefenseController::class)->only(['index', 'show']);
-Route::resource('counterattack', ZombiesCounterController::class)->only(['index', 'show']);
-Route::resource('weaknesses', ZombiesWeaknessController::class)->only(['index', 'show']);
+Route::resource('zumbis', ZumbisController::class)->only(['index', 'show', 'store']);
+
+Route::resource('defenses', ZumbisDefenseController::class)->only(['index', 'show']);
+Route::resource('counterattack', ZumbisCounterController::class)->only(['index', 'show']);
+Route::resource('weaknesses', ZumbisWeaknessController::class)->only(['index', 'show']);

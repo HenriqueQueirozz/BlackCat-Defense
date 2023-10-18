@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zombie_weakness', function (Blueprint $table) {
-            $table->id('id_weakness');
-            $table->longText('descricao');
-            $table->string('imagem', 100)->nullable();
-            $table->enum('ponto_explorado', ['F', 'V', 'I', 'FV', 'FI', 'VI', 'FVI']);
+        Schema::create('zumbi_counter', function (Blueprint $table) {
+            $table->id('counter_id');
+            $table->string('name', 60);
+            $table->longText('description');
+            $table->string('image', 100)->nullable();
+            $table->enum('exploded_point', ['S', 'V', 'I', 'SV', 'SI', 'VI', 'SVI']);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('zombies_weakness');
+        Schema::dropIfExists('zumbi_counter');
     }
 };
