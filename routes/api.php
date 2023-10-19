@@ -7,6 +7,7 @@ use App\Http\Controllers\ZumbisController;
 use App\Http\Controllers\ZumbisCounterController;
 use App\Http\Controllers\ZumbisDefenseController;
 use App\Http\Controllers\ZumbisWeaknessController;
+use App\Http\Controllers\ZumbisStrengthnessController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,3 +15,4 @@ Route::resource('zumbis', ZumbisController::class)->only(['index', 'show', 'stor
 Route::resource('defenses', ZumbisDefenseController::class)->only(['index', 'show']);
 Route::resource('counterattack', ZumbisCounterController::class)->only(['index', 'show']);
 Route::resource('weaknesses', ZumbisWeaknessController::class)->only(['index', 'show']);
+Route::resource('strengthness', ZumbisStrengthnessController::class)->only(['index', 'show']);

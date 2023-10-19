@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('name', 60);
             $table->longText('description');
             $table->string('image', 100)->nullable();
-            $table->enum('defensed_point', ['S', 'V', 'I', 'SV', 'SI', 'VI', 'SVI']);
+            $table->integer('strengthness_id')->unsigned();
+            $table->foreign('strengthness_id')
+                ->references('strengthness_id')
+                ->on('zumbi_strengthness')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -19,6 +19,10 @@ class ZumbiCounter extends Model
         'exploded_point'
     ];
 
+    function ZumbiWeakness() {
+        return $this->belongsTo('App\ZumbiWeakness');
+    }
+
     public function selecionarManobrasDeAtaque($desvantagem)
     {
         $contra_ataque = ZumbiCounter::where('exploded_point', $desvantagem)->get();

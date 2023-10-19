@@ -19,6 +19,10 @@ class ZumbiDefense extends Model
         'defensed_point'
     ];
 
+    function ZumbiStrenghness() {
+        return $this->belongsTo('App\ZumbiStrenghness');
+    }
+
     public function selecionarManobrasDeDefesa($vantagem)
     {
         $defesa = ZumbiDefense::where('defensed_point', $vantagem)->get();

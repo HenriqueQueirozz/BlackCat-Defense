@@ -8,19 +8,19 @@ use Illuminate\Http\Request;
 class ZumbisWeaknessController extends Controller
 {
     public function index(){
-        $fraquezas = ZumbiWeakness::all();
-        return response()->json(["message" => "Listando todas as fraquezas zumbi.", "data" => $fraquezas], 200);
+        $pontos_fracos = ZumbiWeakness::all();
+        return response()->json(["message" => "Listando todos os pontos fracos de zumbi.", "data" => $pontos_fracos], 200);
     }
 
     public function show($id){
-        $fraqueza = ZumbiWeakness::find($id);
+        $ponto_fraco = ZumbiWeakness::find($id);
 
-        if(!$fraqueza){
+        if(!$ponto_fraco){
             return response()->json(
-                ["error" => 'Fraqueza zumbi não encontrada.', 'message' => 'O identificador fornecido não se refere a nenhuma fraqueza zumbi registrada.'], 404
+                ["error" => 'Ponto fraco de zumbi não encontrado.', 'message' => 'O identificador fornecido não se refere a nenhum ponto fraco de zumbi registrado.'], 404
             );
         }
 
-        return response()->json(["message" => "Fraqueza localizada.", "data" => $fraqueza], 200);
+        return response()->json(["message" => "Ponto fraco de zumbi localizado.", "data" => $ponto_fraco], 200);
     }
 }

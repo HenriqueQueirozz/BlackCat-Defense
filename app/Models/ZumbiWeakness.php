@@ -19,6 +19,11 @@ class ZumbiWeakness extends Model
         'weakness_point'
     ];
 
+    public function ZumbiCounter()
+    {
+        return $this->hasMany('App\ZumbiCounter');
+    }
+
     public function analisandoFraquezas($desvantagem)
     {
         $fraquezas = ZumbiWeakness::where('weakness_point', $desvantagem)->get();

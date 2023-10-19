@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 60);
             $table->longText('description');
             $table->string('image', 100)->nullable();
-            $table->enum('weakness_point', ['S', 'V', 'I', 'SV', 'SI', 'VI', 'SVI', '-']);
+            $table->enum('weakness_point', ['S', 'V', 'I', '-']);
             $table->timestamps();
         });
     }
