@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ZumbiWeakness extends Model
+class Weakness extends Model
 {
     use HasFactory;
 
-    protected $table = 'zumbi_weakness';
+    protected $table = 'weakness';
     protected $primaryKey = 'weakness_id';
 
     protected $fillable = [
@@ -19,14 +19,19 @@ class ZumbiWeakness extends Model
         'weakness_point'
     ];
 
-    public function ZumbiCounter()
+    public function Counter()
     {
-        return $this->hasMany('App\ZumbiCounter');
+        return $this->hasMany('App\Counter');
     }
+
+    public function zumbis(){
+        return $this->belongsToMany(Zumbi::class, 'weakness_zumbi');
+    }
+
 
     public function analisandoFraquezas($desvantagem)
     {
-        $fraquezas = ZumbiWeakness::where('weakness_point', $desvantagem)->get();
+        $fraquezas = Weakness::where('weakness_point', $desvantagem)->first();
         return $fraquezas;
     }
 }

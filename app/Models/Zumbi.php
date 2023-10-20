@@ -28,4 +28,11 @@ class Zumbi extends Model
         'favorite_game'
     ];
  
+    public function weakness(){
+	    return $this->belongsToMany(Weakness::class, 'weakness_zumbi');
+    }
+
+    public function strength() {
+	    return $this->belongsToMany(Strength::class, 'strength_zumbi');
+    }
 }

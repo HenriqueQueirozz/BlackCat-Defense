@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ZumbiCounter;
+use App\Models\Counter;
 use Illuminate\Http\Request;
 
-class ZumbisCounterController extends Controller
+class CounterController extends Controller
 {
     public function index(){
-        $contra_ataques = ZumbiCounter::all();
+        $contra_ataques = Counter::all();
         return response()->json(["message" => "Listando todas as manobras de ataque.", "data" => $contra_ataques], 200);
     }
 
     public function show($id){
-        $contra_ataque = ZumbiCounter::find($id);
+        $contra_ataque = Counter::find($id);
 
         if(!$contra_ataque){
             return response()->json(

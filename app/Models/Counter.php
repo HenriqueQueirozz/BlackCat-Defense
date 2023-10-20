@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ZumbiStrenghness extends Model
+class Counter extends Model
 {
     use HasFactory;
 
-    protected $table = 'zumbi_strengthness';
-    protected $primaryKey = 'strengthness_id';
+    protected $table = 'counter';
+    protected $primaryKey = 'counter_id';
 
     protected $fillable = [
         'name',
         'description',
         'image', 
-        'fortification_point'
+        'weakness_id'
     ];
 
-    public function ZumbiDefense()
-    {
-        return $this->hasMany('App\ZumbiDefense');
+    function Weakness() {
+        return $this->belongsTo('App\Weakness');
     }
 
 }
+

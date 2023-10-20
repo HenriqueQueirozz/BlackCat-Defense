@@ -5,27 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ZumbiDefense extends Model
+class Defense extends Model
 {
     use HasFactory;
 
-    protected $table = 'zumbi_defense';
+    protected $table = 'defense';
     protected $primaryKey = 'defense_id';
 
     protected $fillable = [
         'name',
         'description',
         'image', 
-        'defensed_point'
+        'strength_id'
     ];
 
     function ZumbiStrenghness() {
-        return $this->belongsTo('App\ZumbiStrenghness');
-    }
-
-    public function selecionarManobrasDeDefesa($vantagem)
-    {
-        $defesa = ZumbiDefense::where('defensed_point', $vantagem)->get();
-        return $defesa;
+        return $this->belongsTo('App\Strength');
     }
 }

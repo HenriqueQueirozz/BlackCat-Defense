@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ZumbiStrenghness;
+use App\Models\Strength;
 use Illuminate\Http\Request;
 
-class ZumbisStrenghnessController extends Controller
+class StrengthController extends Controller
 {
     public function index(){
-        $pontos_fortes = ZumbiStrenghness::all();
+        $pontos_fortes = Strength::all();
         return response()->json(["message" => "Listando todos os pontos fortes de zumbis.", "data" => $pontos_fortes], 200);
     }
 
     public function show($id){
-        $ponto_forte = ZumbiStrenghness::find($id);
+        $ponto_forte = Strength::find($id);
 
         if(!$ponto_forte){
             return response()->json(

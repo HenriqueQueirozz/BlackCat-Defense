@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('zumbi', function (Blueprint $table) {
-            $table->increments('zumbi_id');
+            $table->id('zumbi_id');
 	        $table->enum('dangerousness', ['Muito Baixa', 'Baixa', 'Media', 'Alta', 'Muita Alta'])->nullable();
 	        $table->integer('strength')->nullable();
 	        $table->integer('velocity')->nullable();

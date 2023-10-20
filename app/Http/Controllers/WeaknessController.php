@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ZumbiWeakness;
+use App\Models\Weakness;
 use Illuminate\Http\Request;
 
-class ZumbisWeaknessController extends Controller
+class WeaknessController extends Controller
 {
     public function index(){
-        $pontos_fracos = ZumbiWeakness::all();
+        $pontos_fracos = Weakness::all();
         return response()->json(["message" => "Listando todos os pontos fracos de zumbi.", "data" => $pontos_fracos], 200);
     }
 
     public function show($id){
-        $ponto_fraco = ZumbiWeakness::find($id);
+        $ponto_fraco = Weakness::find($id);
 
         if(!$ponto_fraco){
             return response()->json(

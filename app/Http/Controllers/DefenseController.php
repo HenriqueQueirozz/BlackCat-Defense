@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ZumbiDefense;
+use App\Models\Defense;
 use Illuminate\Http\Request;
 
-class ZumbisDefenseController extends Controller
+class DefenseController extends Controller
 {
     public function index(){
-        $defesas = ZumbiDefense::all();
+        $defesas = Defense::all();
         return response()->json(["message" => "Listando todas as manobras de defesa.", "data" => $defesas], 200);
     }
 
     public function show($id){
-        $defesa = ZumbiDefense::find($id);
+        $defesa = Defense::find($id);
 
         if(!$defesa){
             return response()->json(

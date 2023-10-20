@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zumbi_weakness', function (Blueprint $table) {
-            $table->id('weakness_id');
+        Schema::create('counter', function (Blueprint $table) {
+            $table->id('counter_id');
             $table->string('name', 60);
             $table->longText('description');
             $table->string('image', 100)->nullable();
-            $table->enum('weakness_point', ['S', 'V', 'I', '-']);
+            $table->unsignedBigInteger('weakness_id')->unsigned();
+            $table->foreign('weakness_id')
+                ->references('weakness_id')
+                ->on('weakness')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('zumbi_weakness');
+        Schema::dropIfExists('counter');
     }
 };

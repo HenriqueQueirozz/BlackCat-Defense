@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zumbi_strengthness', function (Blueprint $table) {
-            $table->id('strengthness_id');
+        Schema::create('defense', function (Blueprint $table) {
+            $table->id('defense_id');
             $table->string('name', 60);
             $table->longText('description');
             $table->string('image', 100)->nullable();
-            $table->enum('fortification_point', ['S', 'V', 'I', '-']);
+            $table->unsignedBigInteger('strength_id')->unsigned();
+            $table->foreign('strength_id')
+                ->references('strength_id')
+                ->on('strength')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('zumbi_strengthness');
+        Schema::dropIfExists('defense');
     }
 };
