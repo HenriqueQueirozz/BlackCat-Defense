@@ -24,9 +24,6 @@ class Strength extends Model
         return $this->hasMany('App\Defense');
     }
 
-    public function zumbis(){
-	    return $this->belongsToMany(Zumbi::class, 'strength_zumbi');
-    }
 
     public function analisandoFortificacoes($vantagem)
     {

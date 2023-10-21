@@ -15,33 +15,29 @@ class StrengthSeeder extends Seeder
     {
         DB::table('strength')->insert([
             [
-                'strength_id' => 1,
-                'name' => 'Força',
-                'description' => '',
+                'name' => 'ZUMBII ESMAGAA',
+                'description' => 'Se esse zumbi fosse mais musculoso poderia facilmente ser confundido com o HULK.',
                 'image' => '',
                 'fortification_point' => 'S',
             ],
             [
-                'strength_id' => 2,
-                'name' => 'Velocidade',
-                'description' => '',
+                'name' => 'Zumbi Bolt',
+                'description' => 'Semelhante ao um ex grudento, ele não vai sair do seu pé (literalmente, esse é maratonista).',
                 'image' => '',
                 'fortification_point' => 'V',
             ],
             [
-                'strength_id' => 3,
-                'name' => 'Inteligencia',
-                'description' => '',
+                'name' => 'Elementar meu caro Watson',
+                'description' => 'O que esse zumbi faz impressiona até Albert Einsten, de um papel e uma caneta para ele e teremos os mistérios da matéria escura resolvidos.',
                 'image' => '',
                 'fortification_point' => 'I',
             ],
             [
-                'strength_id' => 4,
-                'name' => 'Neutro',
-                'description' => '',
+                'name' => 'Padrão',
+                'description' => 'É um zumbi padrão, eu acho que estar VIVO depois de morto já é um ponto forte muito grande.',
                 'image' => '',
                 'fortification_point' => '-',
-            ]
+            ],
         ]);
     }
 }

@@ -15,29 +15,41 @@ class DefenseSeeder extends Seeder
     {
         DB::table('defense')->insert([
             [
-                'name' => 'Força',
-                'description' => '',
+                'name' => 'Bolha de proteção',
+                'description' => 'Uma bolha de mágica de proteção, aguenta diversas pancadas, apara projéties, resumindo, um ótimo lugar para passar umas férias, 0 bugs, 0 problemas.',
                 'image' => '',
                 'strength_id' => 1,
             ],
             [
-                'name' => 'Velocidade',
-                'description' => '',
+                'name' => 'Escudos de penas',
+                'description' => 'Penas geneticamente modificadas crescem rapidamente em torno do pato, sua resistência é similar ao aço, a defesa PERFEITA!',
+                'image' => '',
+                'strength_id' => 1,
+            ],
+            [
+                'name' => 'Patas turbo',
+                'description' => 'Botas metálicas com propulsores a jato, não pega nuncaaa, coma nossa poeira.',
                 'image' => '',
                 'strength_id' => 2,
             ],
             [
-                'name' => 'Inteliencia',
-                'description' => '',
+                'name' => 'Voo de emêrgencia',
+                'description' => 'Fugir não deveria ser vergonha, é uma "saída estratégica", o voo é uma saída estratégica elegante.',
+                'image' => '',
+                'strength_id' => 2,
+            ],
+            [
+                'name' => 'Disfarce de zumbi',
+                'description' => 'Um pato zumbi... Serio, você atacaria um Pato zumbi? NÃO!! É o plano perfeito.',
                 'image' => '',
                 'strength_id' => 3,
             ],
             [
-                'name' => 'Neutro',
-                'description' => '',
+                'name' => 'Dança frenética',
+                'description' => 'Uma série de passos de dança sensacionais, deslumbrantes e frenéticos, quando eles entenderem o que está acontecendo, o show já acabou.',
                 'image' => '',
-                'strength_id' => 4,
-            ]
+                'strength_id' => 3,
+            ],
         ]);
     }
 }

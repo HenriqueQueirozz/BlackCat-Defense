@@ -25,14 +25,9 @@ class Zumbi extends Model
         'blood_type',
         'music_style',
         'sport', 
-        'favorite_game'
+        'favorite_game',
+        'strength_id',
+        'weakness_id'
     ];
  
-    public function weakness(){
-	    return $this->belongsToMany(Weakness::class, 'weakness_zumbi');
-    }
-
-    public function strength() {
-	    return $this->belongsToMany(Strength::class, 'strength_zumbi');
-    }
 }

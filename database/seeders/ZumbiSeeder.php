@@ -28,6 +28,8 @@ class ZumbiSeeder extends Seeder
                 'music_style' => 'Pagode',
                 'sport' => 'Atletismo',
                 'favorite_game' => 'Minecraft',
+                'strength_id' => 1,
+                'weakness_id' => 3
             ]
         );
     }

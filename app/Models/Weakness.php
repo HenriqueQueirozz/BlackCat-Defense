@@ -24,10 +24,6 @@ class Weakness extends Model
         return $this->hasMany('App\Counter');
     }
 
-    public function zumbis(){
-        return $this->belongsToMany(Zumbi::class, 'weakness_zumbi');
-    }
-
 
     public function analisandoFraquezas($desvantagem)
     {

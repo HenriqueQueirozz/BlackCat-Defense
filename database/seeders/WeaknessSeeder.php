@@ -15,30 +15,26 @@ class WeaknessSeeder extends Seeder
     {
         DB::table('weakness')->insert([
             [
-                'weakness_id' => 1,
-                'name' => 'Força',
-                'description' => '',
+                'name' => 'Sansão careca',
+                'description' => 'Pense na pessoa mais forte do mundo! Agora tire toda sua força, bom, esse zumbi ainda perderia.',
                 'image' => '',
                 'weakness_point' => 'S',
             ],
             [
-                'weakness_id' => 2,
-                'name' => 'Velocidade',
-                'description' => '',
+                'name' => 'Rubinho Barrichello',
+                'description' => 'Por mais que ele tente muito MUITO te alcançar, ele não vai conseguir :(',
                 'image' => '',
                 'weakness_point' => 'V',
             ],
             [
-                'weakness_id' => 3,
-                'name' => 'Inteligencia',
-                'description' => '',
+                'name' => 'Lag mental',
+                'description' => 'Andar, enchergar e pensar, os simples estímulos do dia a dia já são demais para esse zumbi.',
                 'image' => '',
                 'weakness_point' => 'I',
             ],
             [
-                'weakness_id' => 4,
-                'name' => 'Neutro',
-                'description' => '',
+                'name' => 'Padrão',
+                'description' => 'É um zumbi padrão, está em decomposição e tals, e bom é um MORTO-VIVO, provavelmente seus músculos já estão danificados, nenhum ponto marcante.',
                 'image' => '',
                 'weakness_point' => '-',
             ],

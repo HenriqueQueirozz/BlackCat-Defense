@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Zumbi;
 use App\Models\Strength;
 use App\Models\Weakness;
+use App\Models\Counter;
+use App\Models\Defense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -35,6 +37,10 @@ class ZumbisController extends Controller
             return response()->json(["error" => 'Informação inválida.', "message" => $validator->errors()], 422);
         }
             
+        // print_r('<pre>');
+        // print_r($request->all());
+        // exit;
+
         $zumbi = new Zumbi();
         $zumbi->fill($request->all());
 
@@ -71,7 +77,20 @@ class ZumbisController extends Controller
             );
         }
 
-        return response()->json(["message" => "Zumbi localizado.", "data" => $zumbi], 200);
+        $strength = Strength::find($zumbi->strength_id);
+        $weakness = Weakness::find($zumbi->weakness_id);
+        $counter = Counter::find($weakness->weakness_id);
+        $defense = Defense::find($strength->strength_id);
+
+        $dadosZumbi = [
+            'zumbi' => $zumbi,
+            'strength' => $strength,
+            'weakness' => $weakness,
+            'defense' => $defense,
+            'counter' => $counter,
+        ];
+
+        return response()->json(["message" => "Zumbi localizado.", "data" => $dadosZumbi], 200);
     }
 
     public function analiseDeAtributos($zumbi){
@@ -171,32 +190,12 @@ class ZumbisController extends Controller
                 break;
         }
 
+        $array_atributo = ['S', 'V', 'I', '-'];
+        $pontoForte = $Strength->analisandoFortificacoes($array_atributo[random_int(0, 3)]);
+        $zumbi->strength_id = $pontoForte->strength_id;
 
-
-
-
-
-        print_r('<pre>');
-        print_r($resultadoCalculos);
-        exit;
-
-        foreach($resultadoCalculos['vantagem'] as $atributo){
-            $pontoForte = $Strength->analisandoFortificacoes($atributo);
-            $zumbi->strength()->attach($pontoForte->strength_id);
-        }
-
-        foreach($resultadoCalculos['neutro'] as $atributo){
-            $pontoForte = $Strength->analisandoFortificacoes($atributo);
-            $pontoFraco = $Weakness->analisandoFraquezas($atributo);
-
-            $zumbi->strength()->attach($pontoForte->strength_id);
-            $zumbi->weakness()->attach($pontoFraco->weakness_id);
-        }
-
-        foreach($resultadoCalculos['desvantagem'] as $atributo){
-            $pontoFraco = $Weakness->analisandoFraquezas($atributo);
-            $zumbi->weakness()->attach($pontoFraco->weakness_id);
-        }
+        $pontoFraco = $Weakness->analisandoFraquezas($array_atributo[random_int(0, 3)]);
+        $zumbi->weakness_id = $pontoFraco->weakness_id;
 
         $zumbi->dangerousness = $faixaPerigo;
 
@@ -534,10 +533,6 @@ class ZumbisController extends Controller
 
         $somaAtributos = 0;
         $somaBonus = 0;
-        $atributo = '';
-        $arrayVantagem = [];
-        $arrayNeutro = [];
-        $arrayDesvantagem = [];
 
         foreach($arrayNivelPerigo as $key => $value){
             $somaAtributos += $value;
@@ -545,47 +540,13 @@ class ZumbisController extends Controller
             if($value <= 40){
                 //Desvantagem
                 $somaBonus -= 10;
-
-                if($key == 'strength'){
-                    $atributo = 'S';
-                }else if($key == 'velocity'){
-                    $atributo = 'V';
-                }else{
-                    $atributo = 'I';
-                }
-
-                array_push($arrayDesvantagem, $atributo);
             }else if($value > 80){
                 //Vantagem
                 $somaBonus += 10;
-
-                if($key == 'strength'){
-                    $atributo = 'S';
-                }else if($key == 'velocity'){
-                    $atributo = 'V';
-                }else{
-                    $atributo = 'I';
-                }
-
-                array_push($arrayVantagem, $atributo);
-            }else{
-                //Neutro
-                if($key == 'strength'){
-                    $atributo = 'S';
-                }else if($key == 'velocity'){
-                    $atributo = 'V';
-                }else{
-                    $atributo = 'I';
-                }
-
-                array_push($arrayNeutro, $atributo);
             }
         }
 
         return [
-            'vantagem' => $arrayVantagem,
-            'neutro' => $arrayNeutro,
-            'desvantagem' => $arrayDesvantagem,
             'somaBonus' => $somaBonus,
             'somaAtributos' => $somaAtributos,
             'total' => $somaAtributos + $somaBonus

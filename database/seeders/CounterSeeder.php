@@ -15,29 +15,41 @@ class CounterSeeder extends Seeder
     {
         DB::table('counter')->insert([
             [
-                'name' => 'Força',
-                'description' => '',
+                'name' => 'Quack nuclear',
+                'description' => 'Semelhante a arma mais mortal da humanidade, a bomba "Quack nuclear" detonar todos os mortos-vivos do local, não há força que resista.',
                 'image' => '',
                 'weakness_id' => 1,
             ],
             [
-                'name' => 'Velocidade',
-                'description' => '',
+                'name' => 'Bazooka de migalhas de pão',
+                'description' => 'Armamento pesado, 4kg de pão, polvora e muito ódio, todos os zumbis serão pulverizados.',
+                'image' => '',
+                'weakness_id' => 1,
+            ],
+            [
+                'name' => 'Granada de ovos',
+                'description' => 'Parecem inofensivas, mas seu estrago é grande, CUIDADO COM OS OVOS MEXIDOS!!',
                 'image' => '',
                 'weakness_id' => 2,
             ],
             [
-                'name' => 'Inteligencia',
-                'description' => '',
+                'name' => 'Canhão de água',
+                'description' => 'Uma quantidade torrencial de água, projetada em alta velocidade, não deixa nenhum zumbi chegar perto, imagina se pega no olho',
+                'image' => '',
+                'weakness_id' => 2,
+            ],
+            [
+                'name' => 'Enxurrada de fake news',
+                'description' => 'São tantas informações absurdas e sem confirmação de fonte, que não tem jeito, qualquer cerebro travaria.',
                 'image' => '',
                 'weakness_id' => 3,
             ],
             [
-                'name' => 'Neutro',
-                'description' => '',
+                'name' => 'Katana de pena',
+                'description' => 'Um dialogo pode resolver muitas coisas, mas a violência com certeza encerra todas >:).',
                 'image' => '',
-                'weakness_id' => 4,
-            ]
+                'weakness_id' => 3,
+            ],
         ]);
     }
 }
