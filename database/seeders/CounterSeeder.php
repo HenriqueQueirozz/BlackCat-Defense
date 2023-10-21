@@ -23,13 +23,13 @@ class CounterSeeder extends Seeder
             [
                 'name' => 'Bazooka de migalhas de pão',
                 'description' => 'Armamento pesado, 4kg de pão, polvora e muito ódio, todos os zumbis serão pulverizados.',
-                'image' => 'bazooka.jpg',
+                'image' => 'bazooka.jpeg',
                 'weakness_id' => 1,
             ],
             [
                 'name' => 'Granada de ovos',
                 'description' => 'Parecem inofensivas, mas seu estrago é grande, CUIDADO COM OS OVOS MEXIDOS!!',
-                'image' => 'granada.jpg',
+                'image' => 'granada.jpeg',
                 'weakness_id' => 2,
             ],
             [
@@ -47,7 +47,7 @@ class CounterSeeder extends Seeder
             [
                 'name' => 'Katana de pena',
                 'description' => 'Um dialogo pode resolver muitas coisas, mas a violência com certeza encerra todas >:).',
-                'image' => 'katana.jpg',
+                'image' => 'katana.jpeg',
                 'weakness_id' => 3,
             ],
         ]);
